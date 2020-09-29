@@ -42,22 +42,19 @@ public class ConvertNumRomainUp {
 	 */
 	public static String convert(int x, String S1, String S2, String S3) {
 		String test = "";
-		if (x == 1) {
-			test = S1;
-		} else if (x == 2) {
-			test = S1 + S1;
-		} else if (x == 3) {
-			test = S1 + S1 + S1;
+		if (x >= 1 && x <= 3) {
+			for (int i = 0; i < x; i++) {
+				test += S1;
+			}
 		} else if (x == 4) {
 			test = S1 + S2;
 		} else if (x == 5) {
 			test = S2;
-		} else if (x == 6) {
-			test = S2 + S1;
-		} else if (x == 7) {
-			test = S2 + S1 + S1;
-		} else if (x == 8) {
-			test = S2 + S1 + S1 + S1;
+		} else if (x >= 6 && x <=8) {
+			for (int i = 5; i < x; i++) {
+				test += S1;
+			}
+			test = S2 + test;
 		} else if (x == 9) {
 			test = S1 + S3;
 		}
