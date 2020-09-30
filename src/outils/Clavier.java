@@ -1,4 +1,4 @@
-package initiation;
+package outils;
 
 import java.io.*;
 

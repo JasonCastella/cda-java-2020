@@ -2,6 +2,9 @@ package initiation;
 
 import java.util.List;
 import java.util.Random;
+
+import outils.Clavier;
+
 import java.util.ArrayList;
 
 public class PierreFeuilleCiseaux {

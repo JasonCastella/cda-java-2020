@@ -1,5 +1,7 @@
 package initiation;
 
+import outils.Clavier;
+
 public class ConvertNumRomain {
 
 	public static void main(String[] args) {
