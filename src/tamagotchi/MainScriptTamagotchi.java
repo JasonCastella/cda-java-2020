@@ -43,10 +43,10 @@ public class MainScriptTamagotchi {
 		System.out.println(
 				"En revanche, si vous prenez soin de lui, il atteindra son espérance de vie maximale. Tachez donc de bien vous occuper de lui !");
 
-		for (int x = 1; x <= lifeExpectancy; x++) {
+		for (int x = 1; x <= yourTam.getLife(); x++) {
 			System.out.println("Jour " + x);
 			yourTam.showHealth();
-			for (int i = 1; i < 11; i++) {
+			/*for (int i = 1; i < 11; i++) {
 				System.out.println("Action numéro : " + i+"\nTappez une action à effectuer :");
 				yourTam.showActions();
 				
@@ -58,7 +58,7 @@ public class MainScriptTamagotchi {
 				
 				
 				
-			}
+			}*/
 		}
 
 	}

@@ -9,6 +9,10 @@ public class Tamagotchi {
 	private int health;
 	private int lifeExpectancy;
 
+	public Tamagotchi() {
+		
+	}
+	
 	public Tamagotchi(String name, String specie, String color, String tall, int health, int lifeExpectancy) {
 		this.name = name;
 		this.specie = specie;
@@ -18,6 +22,10 @@ public class Tamagotchi {
 		this.lifeExpectancy = lifeExpectancy;
 	}
 
+	public int getLife() {
+		return lifeExpectancy;
+	}
+	
 	public void chosenSpecie(String specie) {
 		if (specie.equals("Chien")) {
 			dogStats();
