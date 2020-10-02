@@ -9,11 +9,9 @@ public class MainScriptTamagotchi {
 		String specie;
 		String name;
 		String color;
-		String tall = "";
-		int health = 0;
-		int lifeExpectancy = 0;
+		int age = 0;
 
-		System.out.println("Bienvenue sur notre jeu Tamagotchi !");
+		System.out.println("Bienvenue sur notre jeu Tamagotchi !\n");
 
 		do {
 			System.out.println(
@@ -31,7 +29,7 @@ public class MainScriptTamagotchi {
 		} while (!color.equals("noir") && !color.equals("blanc") && !color.equals("gris") && !color.equals("marron")
 				&& !color.equals("roux"));
 
-		Tamagotchi yourTam = new Tamagotchi(name, specie, color, tall, health, lifeExpectancy);
+		Tamagotchi yourTam = new Tamagotchi(name, specie, color);
 		System.out.println("Félicitation, vous venez de créer votre Tamagotchi !\n");
 		yourTam.chosenSpecie(specie);
 		yourTam.show();
@@ -43,23 +41,23 @@ public class MainScriptTamagotchi {
 		System.out.println(
 				"En revanche, si vous prenez soin de lui, il atteindra son espérance de vie maximale. Tachez donc de bien vous occuper de lui !");
 
-		for (int x = 1; x <= yourTam.getLife(); x++) {
-			System.out.println("Jour " + x);
+		for (age = 1; age <= yourTam.getLife(); age++) {
+			System.out.println("\nJour numéro " + age);
 			yourTam.showHealth();
-			/*for (int i = 1; i < 11; i++) {
-				System.out.println("Action numéro : " + i+"\nTappez une action à effectuer :");
-				yourTam.showActions();
-				
-
-				
-				
-				
-				
-				
-				
-				
-			}*/
+			for (int i = 1; i < 11; i++) {
+				int action;
+				do {
+					System.out.println("Action " + i + "\nChoisir une action");
+					yourTam.showActions();
+					action = Clavier.lireIntOrZero();
+					yourTam.pickAction(action);
+				} while (action < 1 || action > 11);
+				yourTam.addNeeds();
+				yourTam.needs();
+				yourTam.showHealth();
+				yourTam.death(age);
+			}
+			yourTam.addHealth();
 		}
-
 	}
 }
