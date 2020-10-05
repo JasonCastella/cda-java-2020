@@ -64,9 +64,9 @@ public class PierreFeuilleCiseaux {
 	/**
 	 * Vérifie si l'utilisateur a rentré un entier
 	 * 
-	 * @param saisie valeur saisie par l'utilisateur
+	 * @param saisie : valeur saisie par l'utilisateur
 	 * @return le nombre entier correspondant, sinon -1 pour retourner un entier qui
-	 *         ne va pas rentrer dans la boucle par la suite
+	 *         ne va pas rentrer dans la boucle et permettre de demander à nouveau.
 	 */
 	public static int testInt(String saisie) {
 		int x;
