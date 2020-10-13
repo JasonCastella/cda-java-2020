@@ -95,6 +95,14 @@ public class Tamagotchi {
 	}
 
 	/**
+	 * Affiche les paramètres de l'enfant qui vient de naitre
+	 */
+	public void showJunior() {
+		System.out.println(
+				"Le petit " + name + " viens de naitre, c'est un magnifique bébé " + specie + " tout " + color);
+	}
+
+	/**
 	 * Annonce les besoins du Tamagotchi, et réagi en fonction de la réactivité de
 	 * l'utilisateur par rapport a ces besoins.
 	 * 
@@ -198,11 +206,15 @@ public class Tamagotchi {
 	}
 
 	/**
-	 * TODO
+	 * Action/Permet au Tamagotchi de se reproduire si appelé dans le switch du
+	 * mainscript
 	 */
-	public void reproduction() {
-		System.out.println("A déterminer...");
+	public void reproduire() {
+		System.out.println(
+				this.name + " est en train de se reproduire, fermeture du rideau !");
+		hungry++;
 		tired++;
+		dirty++;
 	}
 
 	/**
@@ -328,7 +340,7 @@ public class Tamagotchi {
 			break;
 
 		case 7:
-			this.reproduction();
+			this.reproduire();
 			break;
 
 		case 8:

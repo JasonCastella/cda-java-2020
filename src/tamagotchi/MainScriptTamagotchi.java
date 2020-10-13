@@ -51,6 +51,10 @@ public class MainScriptTamagotchi {
 					yourTam.showActions();
 					action = Clavier.lireIntOrZero();
 					yourTam.pickAction(action);
+					if (action == 7) {
+						Tamagotchi babyTam = new Tamagotchi(name + " Junior", specie, color);
+						babyTam.showJunior();
+					}
 				} while (action < 1 || action > 11);
 				yourTam.addNeeds();
 				yourTam.needs();
