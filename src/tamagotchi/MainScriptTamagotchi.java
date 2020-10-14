@@ -7,32 +7,33 @@ public class MainScriptTamagotchi {
 	public static void main(String[] args) {
 
 		String specie;
-		String name;
 		String color;
+		String name;
 		int age = 0;
 
 		System.out.println("Bienvenue sur notre jeu Tamagotchi !\n");
 
 		do {
 			System.out.println(
-					"Veuillez choisir et écrire une espèce parmis les suivantes : Chien, Chat, Ecureuil, Lapin, Dragon");
+					"Veuillez choisir et écrire une espèce parmis les suivantes : chien, chat, ecureuil, lapin, dragon");
 			specie = Clavier.lireString();
-		} while (!specie.equals("Chien") && !specie.equals("Chat") && !specie.equals("Ecureuil")
-				&& !specie.equals("Lapin") && !specie.equals("Dragon"));
+			specie = specie.toLowerCase();
+		} while (!specie.equals("chien") && !specie.equals("chat") && !specie.equals("ecureuil")
+				&& !specie.equals("lapin") && !specie.equals("dragon"));
 
 		System.out.println("Quel nom voulez vous lui donner ?");
 		name = Clavier.lireString();
-
 		do {
 			System.out.println("Veuillez choisir une couleur parmis les suivantes : noir, blanc, gris, marron, roux ?");
 			color = Clavier.lireString();
+			color = color.toLowerCase();
 		} while (!color.equals("noir") && !color.equals("blanc") && !color.equals("gris") && !color.equals("marron")
 				&& !color.equals("roux"));
 
 		Tamagotchi yourTam = new Tamagotchi(name, specie, color);
 		System.out.println("Félicitation, vous venez de créer votre Tamagotchi !\n");
 		yourTam.chosenSpecie(specie);
-		yourTam.show();
+		yourTam.showTam();
 
 		System.out.println(
 				"\nChaque journée se déroule en 10 actions, et certaines sont primordiale pour le bien être de votre Tamagotchi.");
@@ -43,21 +44,24 @@ public class MainScriptTamagotchi {
 
 		for (age = 1; age <= yourTam.getLife(); age++) {
 			System.out.println("\nJour numéro " + age);
-			yourTam.showHealth();
 			for (int i = 1; i < 11; i++) {
 				int action;
 				do {
 					System.out.println("Action " + i + "\nChoisir une action");
+					yourTam.showHealth();
 					yourTam.showActions();
 					action = Clavier.lireIntOrZero();
 					yourTam.pickAction(action);
+					if (action == 7) {
+						Tamagotchi babyTam = new Tamagotchi(name + " Junior", specie, color);
+						babyTam.showBaby();
+					}
 				} while (action < 1 || action > 11);
 				yourTam.addNeeds();
 				yourTam.needs();
-				yourTam.showHealth();
-				yourTam.death(age);
 			}
 			yourTam.addHealth();
 		}
+		yourTam.naturalDeath();
 	}
 }
