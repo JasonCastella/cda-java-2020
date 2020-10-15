@@ -30,7 +30,7 @@ public class Tamagotchi {
 	}
 
 	/**
-	 * permet d'avoir accés à lifeExpectancy pour la durée de la boucle en fonction
+	 * Permet d'avoir accés à lifeExpectancy pour la durée de la boucle en fonction
 	 * de l'age de l'animal.
 	 * 
 	 * @return la durée de vie de l'animal
@@ -57,13 +57,13 @@ public class Tamagotchi {
 	 * @param specie type d'animal (chien, chat etc...)
 	 */
 	public void chosenSpecie(String specie) {
-		if (specie.equals("Chien")) {
+		if (specie.equals("chien")) {
 			initStats("70 cm", 9, 18, 9);
-		} else if (specie.equals("Chat")) {
+		} else if (specie.equals("chat")) {
 			initStats("20 cm", 9, 18, 9);
-		} else if (specie.equals("Ecureuil")) {
+		} else if (specie.equals("ecureuil")) {
 			initStats("15 cm", 6, 12, 6);
-		} else if (specie.equals("Lapin")) {
+		} else if (specie.equals("lapin")) {
 			initStats("20 cm", 6, 12, 6);
 		} else
 			initStats("3 m", 12, 24, 12);
@@ -85,7 +85,7 @@ public class Tamagotchi {
 	}
 
 	/**
-	 * Affiche les paramètres du Tamagotchi à la création
+	 *Affiche les paramètres du Tamagotchi à la création
 	 */
 	public void show() {
 		System.out.println("C'est un " + specie + " " + color + " qui a pour nom " + name + " et qui mesure environ "
@@ -116,6 +116,7 @@ public class Tamagotchi {
 		if (hungry > 7) {
 			System.out.println(name + " est affamé, il perd 1 point de vie.");
 			health--;
+			deathTest();
 		} else if (hungry > 4) {
 			System.out.println(name + " à faim.");
 		}
@@ -124,6 +125,7 @@ public class Tamagotchi {
 			toiletNeed = 0;
 			dirty = 10;
 			health--;
+			deathTest();
 		} else if (toiletNeed > 4) {
 			System.out.println(name + " doit faire ses besoins.");
 		}
@@ -135,25 +137,29 @@ public class Tamagotchi {
 			socialNeed++;
 			toiletNeed++;
 			health--;
+			deathTest();
 		} else if (tired > 9) {
 			System.out.println(name + " est fatigué, il est temps pour lui de se reposer.");
 		}
 		if (dirty > 12) {
 			System.out.println(name + " n'a toujours pas fait sa toilette, il perd un 1 point de vie.");
 			health--;
+			deathTest();
 		} else if (dirty > 9) {
 			System.out.println(name + " aimerait faire sa toilette.");
 		}
 		if (socialNeed > 12) {
 			System.out.println(name + " est déprimé, ses amis lui manque cruellement, il perd 1 point de vie.");
 			health--;
+			deathTest();
 		} else if (socialNeed > 9) {
 			System.out.println(name + " voudrait aller voir ses amis Tamagothci.");
 		}
 	}
 
 	/**
-	 * Incrémentation des besoins placé à la fin de chaques actions
+	 * Incrémentation des besoins, placé en fin de boucle pour une itération après
+	 * chaque action
 	 */
 	public void addNeeds() {
 		hungry++;
@@ -164,7 +170,7 @@ public class Tamagotchi {
 	}
 
 	/**
-	 * Action/effet de nourrir
+	 * Action : nourrir
 	 */
 	public void feed() {
 		System.out.println("Vous venez de nourrir " + this.name + ", il est rassasié !");
@@ -173,7 +179,7 @@ public class Tamagotchi {
 	}
 
 	/**
-	 * Action/effet d'aller au WC
+	 * Action : aller au WC
 	 */
 	public void toilet() {
 		System.out.println(this.name + " se sent mieux, il avait besoin de se soulager !");
@@ -181,15 +187,16 @@ public class Tamagotchi {
 	}
 
 	/**
-	 * Action/effet de dormir
+	 * Action : dormir
 	 */
 	public void sleep() {
-		System.out.println(this.name + " s'endort, paisiblement... puis se réveille en pleine forme !");
+		System.out.println(this.name
+				+ " se prépare son coin pour se coucher et s'endort paisiblement... puis se réveille en pleine forme quelques heures plus tard.");
 		tired = 0;
 	}
 
 	/**
-	 * Action/effet de se laver
+	 * Action : se laver
 	 */
 	public void wash() {
 		System.out.println(
@@ -198,7 +205,7 @@ public class Tamagotchi {
 	}
 
 	/**
-	 * Action/effet de voir ses amis
+	 * Action : voir ses amis
 	 */
 	public void friends() {
 		System.out.println(this.name + " va voir ses amis Tamagotchi, c'est bon pour le moral de se sentir entouré.");
@@ -206,23 +213,21 @@ public class Tamagotchi {
 	}
 
 	/**
-	 * Action/Permet au Tamagotchi de se reproduire si appelé dans le switch du
-	 * mainscript
+	 * Action : se reproduire, création d'un nouveau Tamagochi de la meme
+	 * espèce/couleur
 	 */
-	public void reproduire() {
-		System.out.println(
-				this.name + " est en train de se reproduire, fermeture du rideau !");
-		hungry++;
+	public void reproduction() {
+		System.out.println(this.name + " à trouvé un congénère pour se reproduire et a besoin d'intimité...");
 		tired++;
 		dirty++;
+		hungry++;
 	}
 
 	/**
-	 * Action/effet de faire du sport
+	 * Action : faire du sport
 	 */
 	public void physicalActivity() {
-		System.out.println(this.name
-				+ " va faire une séance de sport, son odeur en a prit un coup, mais il gagne 1 point de vie !");
+		System.out.println(this.name + " va faire une séance de sport, il gagne 1 point de vie !");
 		addHealth();
 		hungry++;
 		tired++;
@@ -230,7 +235,7 @@ public class Tamagotchi {
 	}
 
 	/**
-	 * Action/effet de la teinture
+	 * Action : faire une couleur
 	 */
 	public void hairDye() {
 		System.out.println(this.name + " va faire une petite coloration capilaire, attention tout mais pas roux !");
@@ -239,18 +244,17 @@ public class Tamagotchi {
 	}
 
 	/**
-	 * Action/effet de fumer
+	 * Action : fumer
 	 */
 	public void smoke() {
-		System.out.println(this.name
-				+ " sort un petit cigare de son dos, et se met à le fumer ! Attention, ce n'est pas bon pour la santé... "
-				+ name + " perd 1 point de vie.");
+		System.out.println("On dirait comme de la fumée... Fichtre, mais d'où vient ce cigare " + this.name
+				+ "?!\nFaites attention, ce n'est pas bon pour sa santé... " + this.name + " perd 1 point de vie.");
 		hungry++;
 		health--;
 	}
 
 	/**
-	 * Action de l'humeur
+	 * Action : humeur
 	 */
 	public void mood() {
 		if (health > 0.66 * maxHealth) {
@@ -264,7 +268,7 @@ public class Tamagotchi {
 	}
 
 	/**
-	 * Permet d'enlever ou mettre un masque
+	 * Action : enlever ou mettre un masque
 	 */
 	public void mask() {
 		if (mask) {
@@ -277,19 +281,24 @@ public class Tamagotchi {
 	}
 
 	/**
-	 * Permet de mettre fin à la partie, soit parce que les PV ont atteint 0, soit
-	 * par la durée de vie de l'animal.
-	 * 
-	 * @param age
+	 * Met fin à la partie quand la durée de vie du Tamagotchi est atteinte.
 	 */
-	public void death(int age) {
+	public void naturalDeath() {
+		System.out.println(this.name
+				+ " s'endort profondémment, mais ne se reveillera pas... Vous vous êtes bien occupé de votre Tamagotchi.\n"
+				+ this.name
+				+ " a eu une belle et heureuse vie à vos cotés, et repose maintenant en paix...\nPartie terminé !");
+		System.exit(-1);
+	}
+
+	/**
+	 * Test les points de vie du Tamagotchi, dès que les points de vie atteignent 0,
+	 * la partie s'arrête.
+	 */
+	public void deathTest() {
 		if (health <= 0) {
-			System.out.println(
-					name + " est mort de manière prématurée car ses points de vie ont atteint 0.\nPartie terminé !");
-			System.exit(-1);
-		} else if (age == lifeExpectancy) {
-			System.out.println(name
-					+ " nous a quitté... il est mort de veillesse et a eu une belle et heureuse vie à vos cotés !\nPartie terminé !");
+			System.out.println("Les points de vie de votre Tamagotchi ont atteint 0, " + this.name
+					+ " est mort de manière prématurée car vous ne vous êtes pas bien occupé de lui...\nPartie terminé !");
 			System.exit(-1);
 		}
 	}
@@ -306,7 +315,26 @@ public class Tamagotchi {
 	 */
 	public void showActions() {
 		System.out.println(
-				"1-Manger 2-Dormir 3-Laver 4-Toilette 5-Sport 6-Amis 7-Reproduire 8-Humeur 9-Fumer 10-Teinture 11-Enlever/mettre masque");
+				"1-Manger  2-Dormir  3-Laver  4-WC  5-Sport  6-Amis  7-Reproduire  8-Humeur  9-Fumer  10-Teinture  11-Enlever/mettre masque");
+	}
+
+	/**
+	 * Affiche les paramètres du Tamagotchi à la création.
+	 */
+	public void showTam() {
+		System.out.println("C'est un " + specie + " " + color + " qui a pour nom " + name + " et qui mesure environ "
+				+ tall + ".");
+		System.out.println(
+				"Il a " + health + " point de vie, et son espérance de vie est de " + lifeExpectancy + " jours.");
+	}
+
+	/**
+	 * Introduit le nouveau Tamagochi enfant.
+	 */
+	public void showBaby() {
+		System.out.println("Il semblerait que la tentative de reproduction soit un succès !");
+		System.out
+				.println("Je vous présente " + this.name + ", un joli petit " + this.specie + " " + this.color + " !");
 	}
 
 	/**
@@ -340,7 +368,7 @@ public class Tamagotchi {
 			break;
 
 		case 7:
-			this.reproduire();
+			this.reproduction();
 			break;
 
 		case 8:
