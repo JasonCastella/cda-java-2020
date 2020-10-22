@@ -1,4 +1,4 @@
-package initiation;
+package initiation_objet;
 
 public class Cat {
 
