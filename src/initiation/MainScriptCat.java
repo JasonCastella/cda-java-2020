@@ -1,4 +1,4 @@
-package tamagotchi;
+package initiation;
 
 public class MainScriptCat {
 
