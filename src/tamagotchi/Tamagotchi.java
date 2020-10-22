@@ -28,7 +28,7 @@ public class Tamagotchi {
 		this.specie = specie;
 		this.color = color;
 	}
-	
+
 	/**
 	 * Permet d'avoir accés à lifeExpectancy pour la durée de la boucle en fonction
 	 * de l'age de l'animal.
@@ -85,8 +85,26 @@ public class Tamagotchi {
 	}
 
 	/**
-	 * Permet d'annoncer les besoins du Tamagotchi, et réagi en fonction de la
-	 * réactivité de l'utilisateur par rapport a ces besoins.
+	 *Affiche les paramètres du Tamagotchi à la création
+	 */
+	public void show() {
+		System.out.println("C'est un " + specie + " " + color + " qui a pour nom " + name + " et qui mesure environ "
+				+ tall + ".");
+		System.out.println(
+				"Il a " + health + " point de vie, et son espérance de vie est de " + lifeExpectancy + " jours.");
+	}
+
+	/**
+	 * Affiche les paramètres de l'enfant qui vient de naitre
+	 */
+	public void showJunior() {
+		System.out.println(
+				"Le petit " + name + " viens de naitre, c'est un magnifique bébé " + specie + " tout " + color);
+	}
+
+	/**
+	 * Annonce les besoins du Tamagotchi, et réagi en fonction de la réactivité de
+	 * l'utilisateur par rapport a ces besoins.
 	 * 
 	 * @param hungry     jauge appétit
 	 * @param toiletNeed jauge toilette

@@ -6,6 +6,7 @@ public class MainScriptTamagotchi {
 
 	public static void main(String[] args) {
 
+		// local
 		String specie;
 		String color;
 		String name;
