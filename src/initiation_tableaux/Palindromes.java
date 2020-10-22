@@ -30,7 +30,5 @@ public class Palindromes {
 		} else {
 			System.out.println("Je suis désolé, ce n'est pas un Palindrome");
 		}
-
 	}
-
 }
