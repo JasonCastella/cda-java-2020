@@ -1,33 +1,34 @@
-package tamagotchi;
+package tamagotchiV2;
 
-public class Tamagotchi {
+public class Tamagotchiv2 {
 
-	private String name;
-	private String specie;
-	private String color;
-	private String tall = "";
-	private int health = 0;
-	private int lifeExpectancy = 0;
-	private int hungry = 0;
-	private int toiletNeed = 0;
-	private int tired = 0;
-	private int dirty = 0;
-	private int socialNeed = 0;
-	private int maxHealth = 0;
-	private boolean mask = false;
+	protected String name;
+	protected String specie;
+	protected String color;
+	protected String tall = "";
+	protected int health = 0;
+	protected int lifeExpectancy = 0;
+	protected int hungry = 0;
+	protected int toiletNeed = 0;
+	protected int tired = 0;
+	protected int dirty = 0;
+	protected int socialNeed = 0;
+	protected int maxHealth = 0;
+	protected boolean mask = false;
 
 	/**
-		 * Constructeur Tamagotchi
-		 * 
-		 * @param name   son nom
-		 * @param specie son type (chien, chat etc...)
-		 * @param color  sa couleur
-		 */
-		public Tamagotchi(String name, String specie, String color) {
-			this.name = name;
-			this.specie = specie;
-			this.color = color;
-		}
+	 * Constructeur Tamagotchi
+	 * 
+	 * @param name   son nom
+	 * @param specie son type (chien, chat etc...)
+	 * @param color  sa couleur
+	 */
+	public Tamagotchiv2() {	}
+	public Tamagotchiv2(String name, String specie, String color) {
+		this.name = name;
+		this.specie = specie;
+		this.color = color;
+	}
 
 	/**
 	 * Permet d'avoir accés à lifeExpectancy pour la durée de la boucle en fonction
@@ -52,40 +53,7 @@ public class Tamagotchi {
 	}
 
 	/**
-	 * Permet d'initialiser les caractéristiques en fonction de l'espèce choisie.
-	 * 
-	 * @param specie type d'animal (chien, chat etc...)
-	 */
-	public void chosenSpecie(String specie) {
-		if (specie.equals("chien")) {
-			initStats("70 cm", 9, 18, 9);
-		} else if (specie.equals("chat")) {
-			initStats("20 cm", 9, 18, 9);
-		} else if (specie.equals("ecureuil")) {
-			initStats("15 cm", 6, 12, 6);
-		} else if (specie.equals("lapin")) {
-			initStats("20 cm", 6, 12, 6);
-		} else
-			initStats("3 m", 12, 24, 12);
-	}
-
-	/**
-	 * Permet de définir les caractérisiques pour une espèce.
-	 * 
-	 * @param tall   sa taille
-	 * @param health ses points de vie
-	 * @param lifeEx sa durée de vie
-	 * @param maxH   ses point de vie max
-	 */
-	private void initStats(String tall, int health, int lifeEx, int maxH) {
-		this.tall = tall;
-		this.health = health;
-		this.lifeExpectancy = lifeEx;
-		this.maxHealth = maxH;
-	}
-
-	/**
-	 * Affiche les paramètres du Tamagotchi à la création
+	 *Affiche les paramètres du Tamagotchi à la création
 	 */
 	public void show() {
 		System.out.println("C'est un " + specie + " " + color + " qui a pour nom " + name + " et qui mesure environ "
@@ -173,10 +141,7 @@ public class Tamagotchi {
 	 * Action : nourrir
 	 */
 	public void feed() {
-		/*
-		 * System.out.println("Vous venez de nourrir " + this.name +
-		 * ", il est rassasié !"); toiletNeed++;
-		 */
+		toiletNeed++;
 		hungry = 0;
 	}
 
@@ -184,7 +149,6 @@ public class Tamagotchi {
 	 * Action : aller au WC
 	 */
 	public void toilet() {
-		System.out.println(this.name + " se sent mieux, il avait besoin de se soulager !");
 		toiletNeed = 0;
 	}
 
@@ -192,8 +156,6 @@ public class Tamagotchi {
 	 * Action : dormir
 	 */
 	public void sleep() {
-		System.out.println(this.name
-				+ " se prépare son coin pour se coucher et s'endort paisiblement... puis se réveille en pleine forme quelques heures plus tard.");
 		tired = 0;
 	}
 
@@ -201,8 +163,6 @@ public class Tamagotchi {
 	 * Action : se laver
 	 */
 	public void wash() {
-		System.out.println(
-				this.name + " fait sa toilette, c'est quand même plus agréable d'être propre et de sentir bon !");
 		dirty = 0;
 	}
 
@@ -229,7 +189,6 @@ public class Tamagotchi {
 	 * Action : faire du sport
 	 */
 	public void physicalActivity() {
-		System.out.println(this.name + " va faire une séance de sport, il gagne 1 point de vie !");
 		addHealth();
 		hungry++;
 		tired++;
@@ -240,7 +199,6 @@ public class Tamagotchi {
 	 * Action : faire une couleur
 	 */
 	public void hairDye() {
-		System.out.println(this.name + " va faire une petite coloration capilaire, attention tout mais pas roux !");
 		socialNeed++;
 		dirty--;
 	}
@@ -249,12 +207,14 @@ public class Tamagotchi {
 	 * Action : fumer
 	 */
 	public void smoke() {
-		System.out.println("On dirait comme de la fumée... Fichtre, mais d'où vient ce cigare " + this.name
-				+ "?!\nFaites attention, ce n'est pas bon pour sa santé... " + this.name + " perd 1 point de vie.");
 		hungry++;
 		health--;
 	}
 
+	public void specialAbility() {
+		
+	}
+	
 	/**
 	 * Action : humeur
 	 */
@@ -388,8 +348,11 @@ public class Tamagotchi {
 		case 11:
 			this.mask();
 			break;
+		case 12:
+			this.specialAbility();
+			break;
 		default:
-			System.out.println("Veuillez entrer une commande entre 1 et 11 !");
+			System.out.println("Veuillez entrer une commande entre 1 et 12 !");
 		}
 	}
 

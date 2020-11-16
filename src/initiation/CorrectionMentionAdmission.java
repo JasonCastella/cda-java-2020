@@ -5,7 +5,7 @@ public class CorrectionMentionAdmission {
 	public static void main(String[] args) {
 
 		System.out.println("Veuillez saisir votre note");
-		double note = outils.Clavier.lireDouble();
+		//double note = outils.Clavier.lireDouble();
 		
 		// test du code
 		for (double i = -1; i <= 22; i = i + 0.5) {

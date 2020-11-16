@@ -1,8 +1,7 @@
 package tamagotchi;
 
-import outils.Clavier;
 
-public class MainScriptTamagotchi {
+public class Main {
 
 	public static void main(String[] args) {
 
