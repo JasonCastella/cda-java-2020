@@ -9,7 +9,6 @@ public class Repertoire {
 	private int codePostal;
 	private String ville;
 	private int age;
-
 	
 	public int getIndex() {
 		return index;
@@ -66,5 +65,4 @@ public class Repertoire {
 	public void setAge(int age) {
 		this.age = age;
 	}
-
 }

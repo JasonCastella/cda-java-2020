@@ -5,6 +5,7 @@ import outils.Clavier;
 public class MainRepertoire {
 
 	public static void main(String[] args) {
+		
 		int nb;
 		String nom;
 		String prenom;
@@ -47,13 +48,16 @@ public class MainRepertoire {
 			rep.setAge(age);
 
 			tabPersonne[i] = rep;
+
+			System.out.println("");
 		}
 
-		afficheOlder(tabPersonne);
+		// afficheTout(tabPersonne);
+		affichePlusAgée(tabPersonne, testPlusAgée(tabPersonne));
 
 	}
 
-	public static void afficheAll(Repertoire[] tab) {
+	public static void afficheTout(Repertoire[] tab) {
 		for (Repertoire rep : tab) {
 			System.out.println("");
 			System.out.println("Informations personne numéro : " + rep.getIndex());
@@ -66,14 +70,27 @@ public class MainRepertoire {
 		}
 	}
 
-	public static void afficheOlder(Repertoire[] tab) {
-		int x = 0;
-		System.out.println("");
-		for (Repertoire rep : tab) {
-			if (x < rep.getAge()) {
-				x = rep.getAge();
+	public static int testPlusAgée(Repertoire[] tab) {
+		int positionPlusAgée = 0;
+		int agePlusElevée = 0;
+		for (int i = 0; i < tab.length; i++) {
+			if (agePlusElevée < tab[i].getAge()) {
+				agePlusElevée = tab[i].getAge();
+				positionPlusAgée = i;
 			}
 		}
-		System.out.println(x);
+		return positionPlusAgée;
+	}
+
+	public static void affichePlusAgée(Repertoire[] tab, int indice) {
+		System.out.println("Voici les informations de la personne la plus agée :");
+		System.out.println("Personne numéro : " + tab[indice].getIndex());
+		System.out.println("Nom : " + tab[indice].getNom());
+		System.out.println("Prenom : " + tab[indice].getPrenom());
+		System.out.println("Adresse : " + tab[indice].getAdresse());
+		System.out.println("Code Postal : " + tab[indice].getCodePostal());
+		System.out.println("Ville : " + tab[indice].getVille());
+		System.out.println("Age : " + tab[indice].getAge());
+
 	}
 }
