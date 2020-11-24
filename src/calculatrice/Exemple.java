@@ -1,3 +1,4 @@
+package calculatrice;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;

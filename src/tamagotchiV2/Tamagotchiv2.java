@@ -1,6 +1,6 @@
 package tamagotchiV2;
 
-public class Tamagotchiv2 {
+public abstract class Tamagotchiv2 {
 
 	protected String name;
 	protected String specie;
@@ -23,7 +23,6 @@ public class Tamagotchiv2 {
 	 * @param specie son type (chien, chat etc...)
 	 * @param color  sa couleur
 	 */
-	public Tamagotchiv2() {	}
 	public Tamagotchiv2(String name, String specie, String color) {
 		this.name = name;
 		this.specie = specie;
@@ -211,9 +210,7 @@ public class Tamagotchiv2 {
 		health--;
 	}
 
-	public void specialAbility() {
-		
-	}
+	public abstract void specialAbility();
 	
 	/**
 	 * Action : humeur
@@ -277,7 +274,7 @@ public class Tamagotchiv2 {
 	 */
 	public void showActions() {
 		System.out.println(
-				"1-Manger  2-Dormir  3-Laver  4-WC  5-Sport  6-Amis  7-Reproduire  8-Humeur  9-Fumer  10-Teinture  11-Enlever/mettre masque");
+				"1-Manger  2-Dormir  3-Laver  4-WC  5-Sport  6-Amis  7-Reproduire  8-Humeur  9-Fumer  10-Teinture  11-Enlever/mettre masque 12-Capacité Spéciale");
 	}
 
 	/**

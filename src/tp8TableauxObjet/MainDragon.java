@@ -23,17 +23,17 @@ public class MainDragon {
 			System.out.println("Nom : ");
 			dragon.setNom(Clavier.lireString());
 
-			/*
-			 * do { System.out.println("Sexe : (tappez M pour masculin ou F pour féminin)");
-			 * sexe = Clavier.lireString(); if (sexe == "M") { sexe1 = 'M'; } else if (sexe
-			 * == "F") { sexe1 = 'F'; } } while (sexe1 =='\u0000'); dragon.setSexe(sexe1);
-			 * 
-			 * while(sexe1=='\u0000') {
-			 * System.out.println("Sexe : (tappez M pour masculin ou F pour féminin)"); sexe
-			 * = Clavier.lireString(); if (sexe == "M") { sexe1 = 'M';
-			 * System.out.println("blma"); } else if (sexe == "F") { sexe1 = 'F';
-			 * }System.out.println(sexe + sexe1); } dragon.setSexe(sexe1);
-			 */
+			do {
+				System.out.println("Sexe : (tappez M pour masculin ou F pour féminin)");
+				sexe = Clavier.lireString();
+				// sexe.charAt(0)
+				if (sexe.equals("M")) {
+					sexe1 = 'M';
+				} else if (sexe.equals("F")) {
+					sexe1 = 'F';
+				}
+			} while (sexe1 == '\u0000');
+			dragon.setSexe(sexe1);
 
 			System.out.println("Longueur : ");
 			dragon.setLongueur(Clavier.lireInt());
@@ -41,12 +41,17 @@ public class MainDragon {
 			System.out.println("Nombre d'écailles : ");
 			dragon.setNbEcaille(Clavier.lireInt());
 
-			/*
-			 * do { System.out.println("Peut-il cracher du feu ? (Tappez oui ou non)");
-			 * crache = Clavier.lireString(); if (crache == "oui") { crache1 = true; } else
-			 * if (crache == "non") { crache1 = false; } } while (crache != "oui" | crache
-			 * != "non"); dragon.setCrache(crache1);
-			 */
+			do {
+				System.out.println("Peut-il cracher du feu ? (Tappez oui ou non)");
+				crache = Clavier.lireString();
+				// crache1=crache.equals("oui");
+				if (crache.equals("oui")) {
+					crache1 = true;
+				} else if (crache.equals("non")) {
+					crache1 = false;
+				}
+			} while (!crache.equals("oui") & !crache.equals("non"));
+			dragon.setCrache(crache1);
 
 			System.out.println("Trait de caractère : ");
 			dragon.setComportement(Clavier.lireString());
@@ -55,8 +60,8 @@ public class MainDragon {
 			System.out.println("");
 		}
 
-		//afficheDragon(tabDragon);
-		afficheLePlusGrand(tabDragon, lePlusGrand(tabDragon));
+		afficheDragon(tabDragon);
+		// afficheLePlusGrand(tabDragon, lePlusGrand(tabDragon));
 
 	}
 
@@ -68,7 +73,7 @@ public class MainDragon {
 			System.out.println("Sexe : " + dragon.getSexe());
 			System.out.println("Longueur : " + dragon.getLongueur());
 			System.out.println("Nombre d'écailles : " + dragon.getNbEcaille());
-			System.out.println("Peux il cracher du feu ? " + dragon.isCrache());
+			System.out.println("Crache du feu : " + dragon.isCrache());
 			System.out.println("Trait de caractère : " + dragon.getComportement());
 		}
 	}
@@ -85,7 +90,7 @@ public class MainDragon {
 		return positionDragon;
 	}
 
-	public static void afficheLePlusGrand(Dragon[]tab, int positionDragon) {
+	public static void afficheLePlusGrand(Dragon[] tab, int positionDragon) {
 		System.out.println("Le dragon le plus grand est : " + tab[positionDragon].getNom());
 	}
 }

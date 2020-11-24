@@ -9,7 +9,7 @@ public class Main {
 		String color;
 		String name;
 		int age = 0;
-		Tamagotchiv2 tam = new Tamagotchiv2();
+		Tamagotchiv2 tam;
 
 		System.out.println("Bienvenue sur notre jeu Tamagotchi !\n");
 
@@ -27,18 +27,16 @@ public class Main {
 			color = color.toLowerCase();
 		} while (!color.equals("noir") && !color.equals("blanc") && !color.equals("gris") && !color.equals("marron")
 				&& !color.equals("roux"));
+		tam=new Dog(name, specie, color);
 		switch (specie) {
 		case "chien":
-			Dog dog = new Dog(name, specie, color);
-			tam = dog;
+			tam = new Dog(name, specie, color);
 			break;
 		case "chat":
-			Cat cat = new Cat(name, specie, color);
-			tam = cat;
+			tam = new Cat(name, specie, color);
 			break;
 		case "dragon":
-			Dragon drake = new Dragon(name, specie, color);
-			tam = drake;
+			tam = new Dragon(name, specie, color);
 			break;
 		}
 
@@ -63,7 +61,19 @@ public class Main {
 					action = Clavier.lireIntOrZero();
 					tam.pickAction(action);
 					if (action == 7) {
-						Tamagotchiv2 babyTam = new Tamagotchiv2(name + " Junior", specie, color);
+						Tamagotchiv2 babyTam;
+						babyTam=new Dog(name, specie, color);
+						switch (specie) {
+						case "chien":
+							babyTam = new Dog(name + " Junior", specie, color);
+							break;
+						case "chat":
+							babyTam = new Cat(name + " Junior", specie, color);
+							break;
+						case "dragon":
+							babyTam = new Dragon(name + " Junior", specie, color);
+							break;
+						}
 						babyTam.showBaby();
 					}
 				} while (action < 1 || action > 11);
